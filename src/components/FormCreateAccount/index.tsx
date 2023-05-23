@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { InputAccount } from "../InputAccont";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { ButtonLogin } from "../ButtonLogin";
+import { ButtonSocialMidea } from "../ButtonSocialMidea";
 
 interface FormCreateAccountProps {
   title: string;
@@ -90,9 +92,20 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           id="password"
           error={errors.password?.message}
         />
-        <button type="submit" disabled={!isValid}>
-          Enviar
-        </button>
+
+        <ButtonLogin disabled={true}>
+          {isValid ? "Create Account" : "Fill the form"}
+        </ButtonLogin>
+
+        <ButtonSocialMidea image="../icons/google.svg">
+          Continue with Google
+        </ButtonSocialMidea>
+        <ButtonSocialMidea image="../icons/facebook.svg">
+          Continue with Facebook
+        </ButtonSocialMidea>
+        <ButtonSocialMidea image="../icons/twitter.svg">
+          Continue with Twitter
+        </ButtonSocialMidea>
       </form>
     </div>
   );
