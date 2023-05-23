@@ -1,19 +1,56 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { InputAccount } from "../InputAccont";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface FormCreateAccountProps {
   title: string;
 }
+interface FormFields {
+  email: string;
+  name: string;
+  username: string;
+  password: string;
+}
+
+const schema = z.object({
+  email: z.string().email({ message: "Email inválido" }),
+  name: z.string(),
+  username: z
+    .string()
+    .min(3, { message: "Mínimo 3 caracteres" })
+    .max(10, { message: "Máximo 10 caracteres" }),
+  password: z
+    .string()
+    .min(8, {
+      message: "Mínimo 8 caracteres",
+    })
+    .refine(
+      (value) =>
+        value.match(/[A-Z]/) != null &&
+        value.match(/[a-z]/) != null &&
+        value.match(/[0-9]/),
+      {
+        message: "Senha deve conter letras maiúsculas, minúsculas e números",
+      }
+    ),
+});
+
 export function FormCreateAccount({ title }: FormCreateAccountProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, isValid },
+  } = useForm<FormFields>({
+    resolver: zodResolver(schema),
+    mode: "onChange",
+  });
 
-  const onSubmit = handleSubmit((data) => {
+  console.log(errors);
+
+  const onSubmit = handleSubmit(async (data) => {
     console.log(data);
   });
 
@@ -24,52 +61,38 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
       </h1>
       <form className="flex flex-col gap-2" onSubmit={onSubmit}>
         <InputAccount
-          {...register("email", { required: true })}
-          htmlFor="email"
+          {...register("email")}
           type="email"
           label="Email Address"
-          name="email"
           id="email"
+          error={errors.email?.message}
         />
-        {errors.email != null && <span>E-mail is required</span>}
         <InputAccount
-          {...register("nameUser", {
-            required: true,
-            minLength: {
-              value: 3,
-              message: "Min length is 3",
-            },
-            maxLength: {
-              value: 20,
-              message: "Max length is 20",
-            },
-          })}
-          htmlFor="nameUser"
+          {...register("name")}
           type="text"
           label="Name"
-          name="nameUser"
-          id="nameUser"
+          id="name"
+          error={errors.name?.message}
         />
-        {errors.nameUser != null && <span>Name is required</span>}
+
         <InputAccount
-          {...register("userNameUser", { required: true })}
-          htmlFor="userNameUser"
+          {...register("username")}
           type="text"
-          label="Username"
-          name="userNameUser"
-          id="userNameUser"
+          label="username"
+          id="username"
+          error={errors.username?.message}
         />
-        {errors.userNameUser != null && <span>Username is required</span>}
+
         <InputAccount
-          {...register("password", { required: true })}
-          htmlFor="password"
+          {...register("password")}
           type="password"
           label="Password"
-          name="password"
           id="password"
+          error={errors.password?.message}
         />
-        {errors.password != null && <span>Password is required</span>}
-        <button type="submit">Enviar</button>
+        <button type="submit" disabled={!isValid}>
+          Enviar
+        </button>
       </form>
     </div>
   );

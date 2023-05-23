@@ -1,9 +1,7 @@
+import { FormCreateAccount } from "./components/FormCreateAccount";
+
 function App() {
-  return (
-    <div className="text-3xl font-bold underline">
-      <h1>Hello World!</h1>
-    </div>
-  );
+  return <FormCreateAccount title="Create Account" />;
 }
 
 export default App;
