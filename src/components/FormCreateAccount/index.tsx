@@ -7,7 +7,11 @@ interface FormCreateAccountProps {
   title: string;
 }
 export function FormCreateAccount({ title }: FormCreateAccountProps) {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
@@ -27,6 +31,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           name="email"
           id="email"
         />
+        {errors.email != null && <span>E-mail is required</span>}
         <InputAccount
           {...register("nameUser", {
             required: true,
@@ -45,6 +50,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           name="nameUser"
           id="nameUser"
         />
+        {errors.nameUser != null && <span>Name is required</span>}
         <InputAccount
           {...register("userNameUser", { required: true })}
           htmlFor="userNameUser"
@@ -53,6 +59,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           name="userNameUser"
           id="userNameUser"
         />
+        {errors.userNameUser != null && <span>Username is required</span>}
         <InputAccount
           {...register("password", { required: true })}
           htmlFor="password"
@@ -61,7 +68,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           name="password"
           id="password"
         />
-
+        {errors.password != null && <span>Password is required</span>}
         <button type="submit">Enviar</button>
       </form>
     </div>
