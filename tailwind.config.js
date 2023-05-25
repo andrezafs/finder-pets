@@ -24,6 +24,12 @@ export default {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
+      backgroundImage: {
+        initial: "url('../icons/dog.svg')",
+      },
+      gridTemplateColumns: {
+        "1.5fr": "1.5fr 1fr",
+      },
     },
   },
   plugins: [],
