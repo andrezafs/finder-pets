@@ -4,8 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { InputAccount } from "../InputAccont";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { ButtonLogin } from "../ButtonLogin";
-import { ButtonSocialMidea } from "../ButtonSocialMidea";
 
 interface FormCreateAccountProps {
   title: string;
@@ -44,7 +42,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
     mode: "onChange",
@@ -58,7 +56,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
 
   return (
     <div>
-      <h1 className="font-inter text-2xl font-semibold text-brown text-center">
+      <h1 className="font-inter text-2xl font-semibold text-brown text-center m-10">
         {title}
       </h1>
       <form className="flex flex-col gap-2" onSubmit={onSubmit}>
@@ -80,7 +78,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
         <InputAccount
           {...register("username")}
           type="text"
-          label="username"
+          label="Username"
           id="username"
           error={errors.username?.message}
         />
@@ -92,20 +90,6 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           id="password"
           error={errors.password?.message}
         />
-
-        <ButtonLogin disabled={true}>
-          {isValid ? "Create Account" : "Fill the form"}
-        </ButtonLogin>
-
-        <ButtonSocialMidea image="../icons/google.svg">
-          Continue with Google
-        </ButtonSocialMidea>
-        <ButtonSocialMidea image="../icons/facebook.svg">
-          Continue with Facebook
-        </ButtonSocialMidea>
-        <ButtonSocialMidea image="../icons/twitter.svg">
-          Continue with Twitter
-        </ButtonSocialMidea>
       </form>
     </div>
   );
