@@ -1,7 +1,7 @@
-import { FormCreateAccount } from "./components/FormCreateAccount";
+import { InitialSignUpScreen } from "./components/InitialSignUpScreen";
 
 function App() {
-  return <FormCreateAccount title="Create Account" />;
+  return <InitialSignUpScreen />;
 }
 
 export default App;

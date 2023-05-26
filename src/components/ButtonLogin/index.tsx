@@ -1,6 +1,5 @@
 interface ButtonFormProps {
   children: string;
-  disabled: boolean;
 }
 
 export function ButtonLogin({ children }: ButtonFormProps) {
