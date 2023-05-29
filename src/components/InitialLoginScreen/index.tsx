@@ -1,22 +1,23 @@
 import { ButtonLogin } from "../ButtonLogin";
 import { ButtonSocialMedia } from "../ButtonSocialMedia";
 import { ContainerScreen } from "../ContainerScreen";
-import { FormCreateAccount } from "../FormCreateAccount";
+import { FormLogin } from "../FormLogin";
 import { HomeBackground } from "../HomeBackgound";
 import { Link } from "../Link";
 import { Separator } from "../Separator";
-import { Terms } from "../Terms";
 
-export function InitialSignUpScreen() {
+// interface InitialLoginScreenProps {}
+
+export function InitialLoginScreen() {
   return (
     <ContainerScreen>
-      <HomeBackground></HomeBackground>
-      <div className="overflow-x-hidden py-8 h-screen">
+      <HomeBackground />
+      <div className=" overflow-x-hidden py-8 h-screen">
         <img src="icons/arrow-left.svg" alt="" className="px-7" />
         <div className="flex flex-col items-center gap-4">
-          <FormCreateAccount title="Create Account" />
-          <Terms></Terms>
+          <FormLogin title="Sign In" />
           <ButtonLogin>Sign up</ButtonLogin>
+          <Link text="" href="#" link="Forgot your password?"></Link>
           <Separator></Separator>
           <div className="flex flex-col gap-4 py-6">
             <ButtonSocialMedia
@@ -32,7 +33,7 @@ export function InitialSignUpScreen() {
               social="Continue with Twitter"
             ></ButtonSocialMedia>
           </div>
-          <Link text="Already a member? Sign In" href="#" link="Sign In"></Link>
+          <Link text="Not a member?" href="#" link="Sign Up Now"></Link>
         </div>
       </div>
     </ContainerScreen>

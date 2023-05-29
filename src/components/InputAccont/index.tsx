@@ -10,7 +10,7 @@ interface InputAccountProps extends InputHTMLAttributes<HTMLInputElement> {
 export const InputAccount = forwardRef<HTMLInputElement, InputAccountProps>(
   ({ id, label, error, ...props }, ref) => {
     return (
-      <>
+      <div className="max-w-xs ">
         <label
           htmlFor={id}
           className="font-inter text-sm font-semibold text-brown"
@@ -25,7 +25,7 @@ export const InputAccount = forwardRef<HTMLInputElement, InputAccountProps>(
           {...props}
         />
         {error != null && <span className="text-red-600 ">{error}</span>}
-      </>
+      </div>
     );
   }
 );

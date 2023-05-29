@@ -4,7 +4,7 @@ import { Logo } from "../Logo";
 
 export function HomeBackground() {
   return (
-    <div className="bg-initial bg-cover bg-no-repeat items-center h-full  ">
+    <div className="bg-initial bg-cover bg-no-repeat items-center h-full max-lg:hidden ">
       <div className=" flex flex-col h-full justify-between px-20 pt-24 pb-10">
         <div className="flex gap-10 flex-col">
           <Logo href="#" src="../icons/logo.svg" text="Finder Pets" />

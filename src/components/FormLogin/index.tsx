@@ -1,27 +1,20 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-
-import { zodResolver } from "@hookform/resolvers/zod";
 import { InputAccount } from "../InputAccont";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-interface FormCreateAccountProps {
+interface FormLoginProps {
   title: string;
 }
+
 interface FormFields {
   email: string;
-  name: string;
-  username: string;
   password: string;
 }
 
 const schema = z.object({
   email: z.string().email({ message: "Email inválido" }),
-  name: z.string(),
-  username: z
-    .string()
-    .min(3, { message: "Mínimo 3 caracteres" })
-    .max(10, { message: "Máximo 10 caracteres" }),
   password: z
     .string()
     .min(8, {
@@ -38,7 +31,7 @@ const schema = z.object({
     ),
 });
 
-export function FormCreateAccount({ title }: FormCreateAccountProps) {
+export function FormLogin({ title }: FormLoginProps) {
   const {
     register,
     handleSubmit,
@@ -59,7 +52,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
       <h1 className="font-inter text-2xl font-semibold text-brown text-center m-10">
         {title}
       </h1>
-      <form className="flex flex-col gap-2" onSubmit={onSubmit}>
+      <form action="" className="flex flex-col gap-2" onSubmit={onSubmit}>
         <InputAccount
           {...register("email")}
           type="email"
@@ -67,22 +60,6 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           id="email"
           error={errors.email?.message}
         />
-        <InputAccount
-          {...register("name")}
-          type="text"
-          label="Name"
-          id="name"
-          error={errors.name?.message}
-        />
-
-        <InputAccount
-          {...register("username")}
-          type="text"
-          label="Username"
-          id="username"
-          error={errors.username?.message}
-        />
-
         <InputAccount
           {...register("password")}
           type="password"
