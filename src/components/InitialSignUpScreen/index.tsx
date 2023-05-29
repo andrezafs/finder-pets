@@ -11,7 +11,7 @@ export function InitialSignUpScreen() {
   return (
     <ContainerScreen>
       <HomeBackground></HomeBackground>
-      <div className="overflow-x-hidden py-9 h-screen">
+      <div className="overflow-x-hidden py-8 h-screen">
         <img src="icons/arrow-left.svg" alt="" className="px-7" />
         <div className="flex flex-col items-center gap-4">
           <FormCreateAccount title="Create Account" />

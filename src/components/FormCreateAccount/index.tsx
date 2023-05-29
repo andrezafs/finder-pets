@@ -33,7 +33,7 @@ const schema = z.object({
         value.match(/[a-z]/) != null &&
         value.match(/[0-9]/),
       {
-        message: "Senha deve conter letras maiúsculas, minúsculas e números",
+        message: "A Senha deve conter letras maiúsculas, minúsculas e números",
       }
     ),
 });

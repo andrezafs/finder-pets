@@ -1,7 +1,10 @@
-import { InitialSignUpScreen } from "./components/InitialSignUpScreen";
+import { InitialLoginScreen } from "./components/InitialLoginScreen";
+
+// import { InitialSignUpScreen } from "./components/InitialSignUpScreen";
 
 function App() {
-  return <InitialSignUpScreen />;
+  return <InitialLoginScreen />;
+  // return <InitialSignUpScreen />;
 }
 
 export default App;
