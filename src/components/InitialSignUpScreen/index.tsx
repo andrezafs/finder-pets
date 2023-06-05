@@ -1,5 +1,4 @@
-import { ButtonLogin } from "../ButtonLogin";
-import { ButtonSocialMedia } from "../ButtonSocialMedia";
+import { Button } from "../Button";
 import { ContainerScreen } from "../ContainerScreen";
 import { FormCreateAccount } from "../FormCreateAccount";
 import { HomeBackground } from "../HomeBackgound";
@@ -16,21 +15,34 @@ export function InitialSignUpScreen() {
         <div className="flex flex-col items-center gap-4">
           <FormCreateAccount title="Create Account" />
           <Terms></Terms>
-          <ButtonLogin>Sign up</ButtonLogin>
+          <Button size="lg" color="login">
+            Sign In
+          </Button>
           <Separator></Separator>
           <div className="flex flex-col gap-4 py-6">
-            <ButtonSocialMedia
-              image="icons/google.svg"
-              social="Continue with Google"
-            ></ButtonSocialMedia>
-            <ButtonSocialMedia
-              image="icons/facebook.svg"
-              social="Continue with Facebook"
-            ></ButtonSocialMedia>
-            <ButtonSocialMedia
-              image="icons/twitter.svg"
-              social="Continue with Twitter"
-            ></ButtonSocialMedia>
+            <Button
+              size="lg"
+              color="social"
+              icon={{ src: "icons/google.svg", alt: "Imagem do Google" }}
+            >
+              Continue With Google
+            </Button>
+
+            <Button
+              size="lg"
+              color="social"
+              icon={{ src: "icons/facebook.svg", alt: "Imagem do Facebook" }}
+            >
+              Continue With Facebook
+            </Button>
+
+            <Button
+              size="lg"
+              color="social"
+              icon={{ src: "icons/twitter.svg", alt: "Imagem do Twitter" }}
+            >
+              Continue With Twitter
+            </Button>
           </div>
           <Link text="Already a member? Sign In" href="#" link="Sign In"></Link>
         </div>

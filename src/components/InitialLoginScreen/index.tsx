@@ -1,5 +1,4 @@
-import { ButtonLogin } from "../ButtonLogin";
-import { ButtonSocialMedia } from "../ButtonSocialMedia";
+import { Button } from "../Button";
 import { ContainerScreen } from "../ContainerScreen";
 import { FormLogin } from "../FormLogin";
 import { HomeBackground } from "../HomeBackgound";
@@ -14,24 +13,35 @@ export function InitialLoginScreen() {
       <HomeBackground />
       <div className=" overflow-x-hidden py-8 h-screen">
         <img src="icons/arrow-left.svg" alt="" className="px-7" />
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 ">
           <FormLogin title="Sign In" />
-          <ButtonLogin>Sign up</ButtonLogin>
+          <Button size="lg" color="login">
+            Sign up
+          </Button>
           <Link text="" href="#" link="Forgot your password?"></Link>
           <Separator></Separator>
           <div className="flex flex-col gap-4 py-6">
-            <ButtonSocialMedia
-              image="icons/google.svg"
-              social="Continue with Google"
-            ></ButtonSocialMedia>
-            <ButtonSocialMedia
-              image="icons/facebook.svg"
-              social="Continue with Facebook"
-            ></ButtonSocialMedia>
-            <ButtonSocialMedia
-              image="icons/twitter.svg"
-              social="Continue with Twitter"
-            ></ButtonSocialMedia>
+            <Button
+              size="lg"
+              color="social"
+              icon={{ src: "icons/google.svg", alt: "Imagem do Google" }}
+            >
+              Login with Google
+            </Button>
+            <Button
+              size="lg"
+              color="social"
+              icon={{ src: "icons/facebook.svg", alt: "Imagem do Facebook" }}
+            >
+              Login with Facebook
+            </Button>
+            <Button
+              size="lg"
+              color="social"
+              icon={{ src: "icons/twitter.svg", alt: "Imagem do Twitter" }}
+            >
+              Login with Twitter
+            </Button>
           </div>
           <Link text="Not a member?" href="#" link="Sign Up Now"></Link>
         </div>
