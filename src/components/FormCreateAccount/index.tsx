@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InputAccount } from "../InputAccont";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Input } from "../Input";
 
 interface FormCreateAccountProps {
   title: string;
@@ -60,14 +61,14 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
         {title}
       </h1>
       <form className="flex flex-col gap-2" onSubmit={onSubmit}>
-        <InputAccount
+        <Input
           {...register("email")}
           type="email"
           label="Email Address"
           id="email"
           error={errors.email?.message}
         />
-        <InputAccount
+        <Input
           {...register("name")}
           type="text"
           label="Name"
@@ -75,7 +76,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           error={errors.name?.message}
         />
 
-        <InputAccount
+        <Input
           {...register("username")}
           type="text"
           label="Username"
@@ -83,7 +84,7 @@ export function FormCreateAccount({ title }: FormCreateAccountProps) {
           error={errors.username?.message}
         />
 
-        <InputAccount
+        <Input
           {...register("password")}
           type="password"
           label="Password"

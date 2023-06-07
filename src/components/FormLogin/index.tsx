@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { InputAccount } from "../InputAccont";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Input } from "../Input";
 
 interface FormLoginProps {
   title: string;
@@ -53,14 +54,14 @@ export function FormLogin({ title }: FormLoginProps) {
         {title}
       </h1>
       <form action="" className="flex flex-col gap-2" onSubmit={onSubmit}>
-        <InputAccount
+        <Input
           {...register("email")}
           type="email"
           label="Email Address"
           id="email"
           error={errors.email?.message}
         />
-        <InputAccount
+        <Input
           {...register("password")}
           type="password"
           label="Password"

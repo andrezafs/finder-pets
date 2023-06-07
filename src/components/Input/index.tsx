@@ -1,13 +1,13 @@
 import { type InputHTMLAttributes, forwardRef } from "react";
 
-interface InputAccountProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
   id: string;
   error?: string;
 }
 
-export const InputAccount = forwardRef<HTMLInputElement, InputAccountProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ id, label, error, ...props }, ref) => {
     return (
       <div className="max-w-xs ">
@@ -30,4 +30,4 @@ export const InputAccount = forwardRef<HTMLInputElement, InputAccountProps>(
   }
 );
 
-InputAccount.displayName = "InputAccount";
+Input.displayName = "Input";
