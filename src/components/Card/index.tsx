@@ -5,13 +5,15 @@ import { tv } from "tailwind-variants";
 export const card = tv({
   slots: {
     base: "max-w-2xl relative",
+    figure:
+      "grid grid-rows-1 h-full w-full  relative m-0 mb-8 break-inside-avoid",
     dog: "w-full h-full rounded-lg ",
     title: "font-inter font-semibold text-start text-2xl text-brown",
     description: "font-inter font-medium text-start text-xl text-gray-100",
   },
 });
 
-const { dog, title, description } = card();
+const { dog, title, description, figure } = card();
 
 interface IconProps extends HtmlHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -25,7 +27,7 @@ interface CardProps {
 }
 export function Card({ name, information, ...props }: CardProps) {
   return (
-    <figure className="grid grid-rows-1 h-full w-full  relative m-0 mb-8 break-inside-avoid ">
+    <figure className={figure()}>
       <img {...props.icon} className={dog()} />
 
       <div className="h-full w-full flex flex-col justify-between absolute bottom-0 p-8">
