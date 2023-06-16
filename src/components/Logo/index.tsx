@@ -1,16 +1,28 @@
-interface LogoProps {
+import { type VariantProps, tv } from "tailwind-variants";
+
+export const text = tv({
+  base: "font-inter text-xl font-bold",
+  variants: {
+    color: {
+      light: "text-white",
+      dark: "text-brown",
+    },
+  },
+});
+
+type TextVariants = VariantProps<typeof text>;
+
+interface LogoProps extends TextVariants {
   href: string;
   src: string;
-  text: string;
+  name: string;
 }
 
-export function Logo({ href, src, text }: LogoProps) {
+export function Logo({ href, src, name, color }: LogoProps) {
   return (
     <a href={href} className="gap-3 flex items-center">
       <img src={src} alt="" />
-      <span className="font-inter font-bold text-xl text-white-100">
-        {text}
-      </span>
+      <span className={text({ color })}>{name}</span>
     </a>
   );
 }
