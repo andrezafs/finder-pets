@@ -41,7 +41,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <button className={button(props)}>
       <img {...props.icon} />
-      <div className="w-full font-">{props.children}</div>
+      <div className="w-full ">{props.children}</div>
     </button>
   );
 };
